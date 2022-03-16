@@ -1,4 +1,4 @@
-module.exports = (error, _req, res, _next) => {
-  console.log(error);
-  res.status(500).send('Ups... Something get whrong...');
+module.exports = (err, _req, res, _next) => {
+  console.error(err);
+  return res.status(500).send('Crash server... (Lascou!)');
 };
