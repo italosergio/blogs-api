@@ -13,11 +13,14 @@ app.get('/', (request, response) => {
 
 const error = require('./middlewares/error');
 const userCreate = require('./controllers/userCreate');
+const userLogin = require('./controllers/userLogin');
 const authName = require('./middlewares/authName');
 const authEmail = require('./middlewares/authEmail');
 const authPass = require('./middlewares/authPass');
 const validateEmail = require('./middlewares/validateEmail');
+const validateLogin = require('./middlewares/validateLogin');
 
 app.post('/user', authName, authEmail, authPass, validateEmail, userCreate);
+app.post('/login', authEmail, authPass, validateLogin, userLogin);
 
 app.use(error);
