@@ -20,9 +20,10 @@ const authEmail = require('./middlewares/authEmail');
 const authPass = require('./middlewares/authPass');
 const validateEmail = require('./middlewares/validateEmail');
 const validateLogin = require('./middlewares/validateLogin');
+const validateToken = require('./middlewares/validateToken');
 
 app.post('/user', authName, authEmail, authPass, validateEmail, userCreate);
 app.post('/login', authEmail, authPass, validateLogin, userLogin);
-app.get('/user', allUsers);
+app.get('/user', validateToken, allUsers);
 
 app.use(error);
