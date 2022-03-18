@@ -1,4 +1,4 @@
-const tokenGen = require('../services/tokenGen');
+const tokenGen = require('../services/loginTokenGen');
 
 module.exports = async (req, res, next) => {
   try {

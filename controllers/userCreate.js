@@ -1,5 +1,5 @@
 const { User } = require('../models');
-const tokenGen = require('../services/tokenGen');
+const tokenGen = require('../services/userTokenGen');
 
 module.exports = async (req, res, next) => {
   try {
