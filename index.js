@@ -27,6 +27,6 @@ const validateToken = require('./middlewares/validateToken');
 app.post('/user', authName, authEmail, authPass, validateEmail, userCreate);
 app.post('/login', authEmail, authPass, validateLogin, userLogin);
 app.get('/user', validateToken, allUsers);
-app.get('/user/:id', userById);
+app.get('/user/:id', validateToken, userById);
 
 app.use(error);
