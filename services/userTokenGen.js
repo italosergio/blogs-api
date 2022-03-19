@@ -3,14 +3,14 @@ const jwt = require('jsonwebtoken');
 module.exports = (req) => {
   const { password, ...dataWithoutPass } = req.body;
 
-  const { SECRET } = process.env;
+  const { JWT_SECRET } = process.env;
 
   const jwtConfig = {
     expiresIn: '1y',
     algorithm: 'HS256',
   };
 
-  const token = jwt.sign(dataWithoutPass, SECRET, jwtConfig);
+  const token = jwt.sign(dataWithoutPass, JWT_SECRET, jwtConfig);
 
   return token;
 };

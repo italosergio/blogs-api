@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
 
-const { SECRET } = process.env;
+const { JWT_SECRET } = process.env;
 
-module.exports = (token) => jwt.verify(token, SECRET);
+module.exports = (token) => jwt.verify(token, JWT_SECRET);
