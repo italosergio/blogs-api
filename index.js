@@ -17,6 +17,7 @@ const userCreate = require('./controllers/userCreate');
 const userLogin = require('./controllers/userLogin');
 const allUsers = require('./controllers/allUsers');
 const userById = require('./controllers/userById');
+const categorieCreate = require('./controllers/categorieCreate');
 const authName = require('./middlewares/authName');
 const authEmail = require('./middlewares/authEmail');
 const authPass = require('./middlewares/authPass');
@@ -28,5 +29,6 @@ app.post('/user', authName, authEmail, authPass, validateEmail, userCreate);
 app.post('/login', authEmail, authPass, validateLogin, userLogin);
 app.get('/user', validateToken, allUsers);
 app.get('/user/:id', validateToken, userById);
+app.post('/categories', validateToken, categorieCreate);
 
 app.use(error);
