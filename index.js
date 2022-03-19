@@ -15,6 +15,7 @@ const error = require('./middlewares/error');
 const userCreate = require('./controllers/userCreate');
 const userLogin = require('./controllers/userLogin');
 const allUsers = require('./controllers/allUsers');
+const userById = require('./controllers/userById');
 const authName = require('./middlewares/authName');
 const authEmail = require('./middlewares/authEmail');
 const authPass = require('./middlewares/authPass');
@@ -25,5 +26,6 @@ const validateToken = require('./middlewares/validateToken');
 app.post('/user', authName, authEmail, authPass, validateEmail, userCreate);
 app.post('/login', authEmail, authPass, validateLogin, userLogin);
 app.get('/user', validateToken, allUsers);
+app.get('/user/:id', userById);
 
 app.use(error);
