@@ -19,6 +19,7 @@ const allUsers = require('./controllers/allUsers');
 const userById = require('./controllers/userById');
 const categorieCreate = require('./controllers/categorieCreate');
 const allCategories = require('./controllers/allCategories');
+const blogPost = require('./controllers/blogPost');
 const authName = require('./middlewares/authName');
 const authEmail = require('./middlewares/authEmail');
 const authPass = require('./middlewares/authPass');
@@ -32,5 +33,5 @@ app.get('/user', validateToken, allUsers);
 app.get('/user/:id', validateToken, userById);
 app.post('/categories', validateToken, categorieCreate);
 app.get('/categories', validateToken, allCategories);
-
+app.post('/post', validateToken, blogPost);
 app.use(error);
