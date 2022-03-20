@@ -26,6 +26,7 @@ const authPass = require('./middlewares/authPass');
 const validateEmail = require('./middlewares/validateEmail');
 const validateLogin = require('./middlewares/validateLogin');
 const validateToken = require('./middlewares/validateToken');
+const validatePost = require('./middlewares/validatePost');
 
 app.post('/user', authName, authEmail, authPass, validateEmail, userCreate);
 app.post('/login', authEmail, authPass, validateLogin, userLogin);
@@ -33,5 +34,5 @@ app.get('/user', validateToken, allUsers);
 app.get('/user/:id', validateToken, userById);
 app.post('/categories', validateToken, categorieCreate);
 app.get('/categories', validateToken, allCategories);
-app.post('/post', validateToken, blogPost);
+app.post('/post', validateToken, validatePost, blogPost);
 app.use(error);
