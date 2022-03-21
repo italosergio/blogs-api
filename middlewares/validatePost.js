@@ -15,7 +15,7 @@ module.exports = async (req, res, next) => {
   };
 
   const categoryExist = await getCategory();
-  if (categoryExist) return res.status(400).json({ message: '"categoryId" not found' });
+  if (categoryExist) return res.status(400).json({ message: '"categoryIds" not found' });
 
   next();
 };
