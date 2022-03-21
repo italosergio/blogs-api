@@ -16,7 +16,7 @@ module.exports = async (req, res, next) => {
 
   const obj = {
     id: postId,
-    usereId: user.id,
+    userId: user.id,
     title,
     content,
   };
