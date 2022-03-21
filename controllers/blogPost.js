@@ -2,7 +2,8 @@ const { BlogPost } = require('../models');
 const { User } = require('../models');
 const tokenDecoder = require('../services/tokenDecoder');
 
-module.exports = async (req, res, _next) => {
+module.exports = async (req, res, next) => {
+ try {
   const { title, content } = req.body;
   await BlogPost.create({ title, content });
 
@@ -10,8 +11,7 @@ module.exports = async (req, res, _next) => {
   const postId = Object.keys(posts).length;
 
   const token = req.headers.authorization;
-  const SECRET = process.env.JWT_SECRET;
-  const { email } = tokenDecoder(token, SECRET);
+  const { email } = tokenDecoder(token, process.env.JWT_SECRET);
   const user = await User.findOne({ where: { email } });
 
   const obj = {
@@ -22,4 +22,7 @@ module.exports = async (req, res, _next) => {
   };
   
   return res.status(201).json(obj);
+ } catch (err) {
+   next(err);
+ }
 };

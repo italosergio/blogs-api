@@ -1,7 +1,7 @@
 const { Categorie, User } = require('../models');
 const tokenDecoder = require('../services/tokenDecoder'); 
 
-module.exports = async (req, res, _next) => {
+module.exports = async (req, res, next) => {
   try {
     const token = req.header('authorization');
     const { email } = tokenDecoder(token);
@@ -17,7 +17,7 @@ module.exports = async (req, res, _next) => {
     await Categorie.create({ name });
     const categorie = await Categorie.findOne({ where: { name } });
     return res.status(201).json(categorie);
-  } catch (e) {
-    return res.status(401).json({ message: 'Expired or invalid token' });
+  } catch (err) {
+    next(err);
   }
 };

@@ -1,7 +1,7 @@
 const { User } = require('../models');
 const tokenDecoder = require('../services/tokenDecoder');
 
-module.exports = async (req, res, _next) => {
+module.exports = async (req, res, next) => {
   try {
     const token = req.header('authorization');
     const { email } = tokenDecoder(token);
@@ -11,6 +11,6 @@ module.exports = async (req, res, _next) => {
     if (!user) return res.status(404).json({ message: 'User does not exist' });
     return res.status(200).json(user);
   } catch (err) {
-    return res.status(401).json({ message: 'Expired or invalid token' });
+    next(err);
   }
 };
