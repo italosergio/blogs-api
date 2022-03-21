@@ -6,7 +6,7 @@ module.exports = (req) => {
   const { JWT_SECRET } = process.env;
 
   const jwtConfig = {
-    expiresIn: '5m',
+    expiresIn: '1h',
     algorithm: 'HS256',
   };
 
