@@ -21,5 +21,5 @@ module.exports = async (req, res, _next) => {
     content,
   };
   
-  res.status(200).json(obj);
+  return res.status(201).json(obj);
 };
