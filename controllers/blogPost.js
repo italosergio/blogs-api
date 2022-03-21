@@ -1,5 +1,4 @@
-const { BlogPost } = require('../models');
-const { User } = require('../models');
+const { BlogPost, PostsCategorie, User } = require('../models');
 const tokenDecoder = require('../services/tokenDecoder');
 
 async function getPostId() {
@@ -22,16 +21,29 @@ function getDate() {
   return { published };
 }
 
+async function dbPostsCategoriesDefine(postId, categoryId) {
+  return PostsCategorie.create({ postId, categoryId });
+}
+
+async function createBlogPost(title, content, userId, published) {
+  return BlogPost.create({ title, content, userId, published });
+} 
+
+async function createPostsCategory(postId, categoryIds) {
+  return categoryIds.map((categoryId) => dbPostsCategoriesDefine(postId, categoryId));
+} 
+
 module.exports = async (req, res, next) => {
   try {
   const { id } = await getPostId();
   const { userId } = await getUser(req);
-  const { title, content } = req.body;
+  const { title, content, categoryIds } = req.body;
   getDate();
   const { published } = getDate();
 
-  await BlogPost.create({ title, content, userId, published });
-
+  await createBlogPost(title, content, userId, published);
+  await createPostsCategory(id, categoryIds);
+  
   const obj = {
     id,
     userId,
