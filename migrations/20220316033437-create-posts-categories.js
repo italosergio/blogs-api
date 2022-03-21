@@ -2,14 +2,18 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('PostsCategories', {
-      postId: {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      postId: {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
       categoryId: {
-        forenghKey: true,
+        allowNull: false,
         type: Sequelize.INTEGER
       }
     });
