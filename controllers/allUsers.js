@@ -1,12 +1,9 @@
 const { User } = require('../models');
-const tokenDecoder = require('../services/tokenDecoder');
+const findUser = require('../services/findUser');
 
 module.exports = async (req, res, next) => {
   try {
-    const token = req.header('authorization');
-    const { email } = tokenDecoder(token);
-
-    const user = await User.findOne({ where: { email } });
+    const { user } = await findUser(req);
     if (!user) return res.status(401).json({ message: 'User not authorized!' });
 
     const allUsers = await User.findAll();
