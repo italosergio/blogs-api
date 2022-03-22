@@ -28,6 +28,7 @@ const validateEmail = require('./middlewares/validateEmail');
 const validateLogin = require('./middlewares/validateLogin');
 const validateToken = require('./middlewares/validateToken');
 const validatePost = require('./middlewares/validatePost');
+const postById = require('./controllers/postById');
 
 app.post('/user', authName, authEmail, authPass, validateEmail, userCreate);
 app.post('/login', authEmail, authPass, validateLogin, userLogin);
@@ -38,3 +39,4 @@ app.get('/categories', validateToken, allCategories);
 app.post('/post', validateToken, validatePost, blogPost);
 app.get('/post', validateToken, allPosts);
 app.use(error);
+app.get('/post/:id', validateToken, postById);
