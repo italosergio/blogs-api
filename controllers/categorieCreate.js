@@ -1,10 +1,8 @@
 const { Categorie, User } = require('../models');
-const tokenDecoder = require('../services/tokenDecoder'); 
 
 module.exports = async (req, res, next) => {
   try {
-    const token = req.header('authorization');
-    const { email } = tokenDecoder(token);
+    const { email } = req.decode;
     await User.findOne({ where: { email } });
 
     const { name } = req.body;

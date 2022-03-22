@@ -1,5 +1,4 @@
 const { BlogPost, PostsCategorie, User } = require('../models');
-const tokenDecoder = require('../services/tokenDecoder');
 
 async function getPostId() {
   const posts = await BlogPost.findAll() || 0;
@@ -8,8 +7,7 @@ async function getPostId() {
 }
 
 async function getUser(req) {
-  const token = req.headers.authorization;
-  const { email } = tokenDecoder(token, process.env.JWT_SECRET);
+  const { email } = req.decode;
   const user = await User.findOne({ where: { email } });
   const userId = user.dataValues.id;
   return { userId };
