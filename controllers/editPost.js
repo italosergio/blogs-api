@@ -4,7 +4,7 @@ module.exports = async (req, res, next) => {
   try {
     const { posts } = await findAllPosts(req, res, next);
 
-    return res.status(200).json(posts);
+    res.send(posts[1]);
   } catch (err) {
     next(err);
   }

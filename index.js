@@ -19,6 +19,8 @@ const allUsers = require('./controllers/allUsers');
 const userById = require('./controllers/userById');
 const categorieCreate = require('./controllers/categorieCreate');
 const allCategories = require('./controllers/allCategories');
+const postById = require('./controllers/postById');
+const editPost = require('./controllers/editPost');
 const blogPost = require('./controllers/blogPost');
 const allPosts = require('./controllers/allPosts');
 const authName = require('./middlewares/authName');
@@ -28,7 +30,6 @@ const validateEmail = require('./middlewares/validateEmail');
 const validateLogin = require('./middlewares/validateLogin');
 const validateToken = require('./middlewares/validateToken');
 const validatePost = require('./middlewares/validatePost');
-const postById = require('./controllers/postById');
 
 app.post('/user', authName, authEmail, authPass, validateEmail, userCreate);
 app.post('/login', authEmail, authPass, validateLogin, userLogin);
@@ -38,5 +39,7 @@ app.post('/categories', validateToken, categorieCreate);
 app.get('/categories', validateToken, allCategories);
 app.post('/post', validateToken, validatePost, blogPost);
 app.get('/post', validateToken, allPosts);
-app.use(error);
 app.get('/post/:id', validateToken, postById);
+app.put('/post/:id', validateToken, editPost);
+
+app.use(error);
