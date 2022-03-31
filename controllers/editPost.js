@@ -4,7 +4,7 @@ const getUpdatedDate = require('../services/getDate');
 
 module.exports = async (req, res, next) => {
   try {
-    const { posts } = await findAllPosts(req, res, next);
+    const { posts } = await findAllPosts(req);
     const { id: postId } = req.params;
     const { title, content } = req.body;
     const { updated } = getUpdatedDate();
