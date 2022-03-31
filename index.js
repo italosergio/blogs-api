@@ -35,6 +35,7 @@ const authUserTo = require('./middlewares/authUserTo');
 const authEditBodyReq = require('./middlewares/authEditBodyReq');
 const postExist = require('./middlewares/postExist');
 const deleteMe = require('./controllers/deleteMe');
+const searchPost = require('./controllers/searchPost');
 
 app.post('/user', authName, authEmail, authPass, validateEmail, userCreate);
 app.post('/login', authEmail, authPass, validateLogin, userLogin);
@@ -43,6 +44,7 @@ app.get('/user/:id', validateToken, userById);
 app.post('/categories', validateToken, categorieCreate);
 app.get('/categories', validateToken, allCategories);
 app.post('/post', validateToken, validatePost, blogPost);
+app.get('/post/search', validateToken, searchPost);
 app.get('/post', validateToken, allPosts);
 app.get('/post/:id', validateToken, postExist, getPostById);
 app.put('/post/:id', validateToken, authEditBodyReq, authUserTo, editPost);
