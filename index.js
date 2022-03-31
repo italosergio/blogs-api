@@ -34,6 +34,7 @@ const validatePost = require('./middlewares/validatePost');
 const authUserTo = require('./middlewares/authUserTo');
 const authEditBodyReq = require('./middlewares/authEditBodyReq');
 const postExist = require('./middlewares/postExist');
+const deleteMe = require('./controllers/deleteMe');
 
 app.post('/user', authName, authEmail, authPass, validateEmail, userCreate);
 app.post('/login', authEmail, authPass, validateLogin, userLogin);
@@ -46,5 +47,6 @@ app.get('/post', validateToken, allPosts);
 app.get('/post/:id', validateToken, postExist, getPostById);
 app.put('/post/:id', validateToken, authEditBodyReq, authUserTo, editPost);
 app.delete('/post/:id', validateToken, postExist, authUserTo, deletePost);
+app.delete('/user/me', validateToken, deleteMe);
 
 app.use(error);
