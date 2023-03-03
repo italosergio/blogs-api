@@ -131,7 +131,7 @@ Se o usuário cadastrar o campo "email" com um email que já existe, o resultado
 
 ### 2 - Endpoint POST `/login`
 
-#### Os seguintes pontos serão avaliados:
+#### Os seguintes pontos foram construidos:
 
 - O corpo da requisição deverá seguir o formato abaixo:
 
@@ -197,7 +197,7 @@ Se o login for com usuário inexistente o resultado retornado é conforme exibid
 
 ### 3 - Endpoint GET `/user`
 
-#### Os seguintes pontos serão avaliados:
+#### Os seguintes pontos foram construidos:
 
 - Deve listar todos os **Users** e retorná-los na seguinte estrutura:
 
@@ -236,7 +236,7 @@ Se o token for inválido o resultado retornado é conforme exibido abaixo, com u
 
 ### 4 - Endpoint GET `/user/:id`
 
-#### Os seguintes pontos serão avaliados:
+#### Os seguintes pontos foram construidos:
 
 - Retorna os detalhes do usuário baseado no `id` da rota. Os dados devem ter o seguinte formato:
 
@@ -279,7 +279,7 @@ Se o token for inválido o resultado retornado é conforme exibido abaixo, com u
 
 ### 5 - Endpoint POST `/categories`
 
-#### Os seguintes pontos serão avaliados:
+#### Os seguintes pontos foram construidos:
 
 - Esse endpoint deve receber uma _Categoria_ no corpo da requisição e criá-la no banco. O corpo da requisição deve ter a seguinte estrutura:
 
@@ -320,7 +320,7 @@ Se o token for inexistente o resultado retornado é conforme exibido abaixo, com
 
 ### 6 - Endpoint GET `/categories`
 
-#### Os seguintes pontos serão avaliados:
+#### Os seguintes pontos foram construidos:
 
 - Esse endpoint deve listar todas as Categorias e retorná-las na seguinte estrutura:
 
@@ -360,7 +360,7 @@ Se o token for inexistente o resultado retornado é conforme exibido abaixo, com
 
 ### 7 - Endpoint POST `/post`
 
-#### Os seguintes pontos serão avaliados:
+#### Os seguintes pontos foram construidos:
 
 - Esse endpoint deve receber um _BlogPost_ no corpo da requisição e criá-lo no banco. O corpo da requisição deve ter a seguinte estrutura:
 
@@ -423,7 +423,7 @@ Se o token for inválido o resultado retornado é conforme exibido abaixo, com u
 
 ### 8 - Endpoint GET `/post`
 
-#### Os seguintes pontos serão avaliados:
+#### Os seguintes pontos foram construidos:
 
 - Esse endpoint deve listar todos os _BlogPosts_ e retorná-los na seguinte estrutura:
 
@@ -474,7 +474,7 @@ Se o token for inválido o resultado retornado é conforme exibido abaixo, com u
 
 ### 9 - Endpoint GET `post/:id`
 
-#### Os seguintes pontos serão avaliados:
+#### Os seguintes pontos foram construidos:
 
 - Retorna um **BlogPost** com o `id` especificado. O retorno deve ter os seguinte formato:
 
@@ -531,7 +531,7 @@ Se o id do post for inválido o resultado retornado é conforme exibido abaixo, 
 
 ### 10 - Endpoint PUT `/post/:id`
 
-#### Os seguintes pontos serão avaliados:
+#### Os seguintes pontos foram construidos:
 
 - O endpoint deve receber um **BlogPost** que irá sobrescrever o original com o `id` especificado na URL. Só deve ser permitido para o usuário que criou o **BlogPost**.
 
@@ -601,7 +601,7 @@ Se não conter o campo `content` o resultado retornado é conforme exibido abaix
 
 ### 11 - Endpoint DELETE `post/:id`
 
-#### Os seguintes pontos serão avaliados:
+#### Os seguintes pontos foram construidos:
 
 - Deleta o post com o `id` especificado. Só deve ser permitido para o usuário que criou o **BlogPost**.
 
@@ -645,7 +645,7 @@ Se o token for inválido o resultado retornado é conforme exibido abaixo, com u
 
 ### 12 - Endpoint DELETE `/user/me`
 
-#### Os seguintes pontos serão avaliados:
+#### Os seguintes pontos foram construidos:
 
 - Utilizando o token de autenticação nos headers, o usuário correspondente deve ser apagado.
 
@@ -671,7 +671,7 @@ Se não conter o token o resultado retornado é conforme exibido abaixo, com um 
 
 ### 13 - Endpoint GET `post/search?q=:searchTerm`
 
-#### Os seguintes pontos serão avaliados:
+#### Os seguintes pontos foram construidos:
 
 - Retorna uma array de **BlogPosts** que contenham em seu título, ou conteúdo, o termo pesquisado no `queryParam` da URL. O retorno deve ter o seguinte formato:
 
