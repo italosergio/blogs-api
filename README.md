@@ -12,36 +12,35 @@ _Bem vinda(o)!!_
 
 # Habilidades 
 
-Nesse projeto, você vai construir um back-end usando `ORM` com o pacote `sequelize` do `npm`, e será capaz de:
+Nesse projeto, construí um back-end usando `ORM` com o pacote `sequelize` do `npm`, que é capaz de:
  - Criar e associar tabelas usando `models` do `sequelize`
  - Construir endpoints para consumir os models que criar 
  - Fazer um `CRUD` com o `ORM`
 
-### Desafios
-  - [1 - Sua aplicação deve ter o endpoint POST `/user`](#1---sua-aplicação-deve-ter-o-endpoint-post-user)
-  - [2 - Sua aplicação deve ter o endpoint POST `/login`](#2---sua-aplicação-deve-ter-o-endpoint-post-login)
-  - [3 - Sua aplicação deve ter o endpoint GET `/user`](#3---sua-aplicação-deve-ter-o-endpoint-get-user)
-  - [4 - Sua aplicação deve ter o endpoint GET `/user/:id`](#4---sua-aplicação-deve-ter-o-endpoint-get-userid)
-  - [5 - Sua aplicação deve ter o endpoint POST `/categories`](#5---sua-aplicação-deve-ter-o-endpoint-post-categories)
-  - [6 - Sua aplicação deve ter o endpoint GET `/categories`](#6---sua-aplicação-deve-ter-o-endpoint-get-categories)
-  - [7 - Sua aplicação deve ter o endpoint POST `/post`](#7---sua-aplicação-deve-ter-o-endpoint-post-post)
-  - [8 - Sua aplicação deve ter o endpoint GET `/post`](#8---sua-aplicação-deve-ter-o-endpoint-get-post)
-  - [9 - Sua aplicação deve ter o endpoint GET `post/:id`](#9---sua-aplicação-deve-ter-o-endpoint-get-postid)
-  - [10 - Sua aplicação deve ter o endpoint PUT `/post/:id`](#10---sua-aplicação-deve-ter-o-endpoint-put-postid)
+## Desafios
+  - [1 - Endpoint POST `/user`](#1---Endpoint-post-user)
+  - [2 - Endpoint POST `/login`](#2---Endpoint-post-login)
+  - [3 - Endpoint GET `/user`](#3---Endpoint-get-user)
+  - [4 - Endpoint GET `/user/:id`](#4---Endpoint-get-userid)
+  - [5 - Endpoint POST `/categories`](#5---Endpoint-post-categories)
+  - [6 - Endpoint GET `/categories`](#6---Endpoint-get-categories)
+  - [7 - Endpoint POST `/post`](#7---Endpoint-post-post)
+  - [8 - Endpoint GET `/post`](#8---Endpoint-get-post)
+  - [9 - Endpoint GET `post/:id`](#9---Endpoint-get-postid)
+  - [10 - Endpoint PUT `/post/:id`](#10---Endpoint-put-postid)
   - [Requisitos Bônus](#requisitos-bônus)
-  - [11 - Sua aplicação deve ter o endpoint DELETE `post/:id`](#11---sua-aplicação-deve-ter-o-endpoint-delete-postid)
-  - [12 - Sua aplicação deve ter o endpoint DELETE `/user/me`](#12---sua-aplicação-deve-ter-o-endpoint-delete-userme)
-  - [13 - Sua aplicação deve ter o endpoint GET `post/search?q=:searchTerm`](#13---sua-aplicação-deve-ter-o-endpoint-get-postsearchqsearchterm)
-- [Avisos Finais](#avisos-finais)
+  - [11 - Endpoint DELETE `post/:id`](#11---Endpoint-delete-postid)
+  - [12 - Endpoint DELETE `/user/me`](#12---Endpoint-delete-userme)
+  - [13 - Endpoint GET `post/search?q=:searchTerm`](#13---Endpoint-get-postsearchqsearchterm)
 
 ## Mais detalhes
- ### 1 - Sua aplicação deve ter o endpoint POST `/user`
+ ### 1 - Endpoint POST `/user`
 
-#### Os seguintes pontos serão avaliados:
+#### Os seguintes pontos foram construidos:
 
-- O endpoint deve ser capaz de adicionar um novo user a sua tabela no banco de dados;
+- O endpoint foi capaz de adicionar um novo user a sua tabela no banco de dados;
 
-- O corpo da requisição deverá ter o seguinte formato:
+- O corpo da requisição tem o seguinte formato:
 
   ```json
   {
@@ -51,13 +50,13 @@ Nesse projeto, você vai construir um back-end usando `ORM` com o pacote `sequel
     "image": "http://4.bp.blogspot.com/_YA50adQ-7vQ/S1gfR_6ufpI/AAAAAAAAAAk/1ErJGgRWZDg/S45/brett.png"
   }
   ```
-- O campo `displayName` deverá ser uma string com no mínimo de 8 caracteres;
+- O campo `displayName` é uma string com no mínimo de 8 caracteres;
 
 - O campo `email` será considerado válido se tiver o formato `<prefixo>@<domínio>` e se for único. Ele é obrigatório.
 
 - A senha deverá conter 6 caracteres. Ela é obrigatória.
 
-- Caso exista uma pessoa com o mesmo email na base, deve-se retornar o seguinte erro:
+- Caso exista uma pessoa com o mesmo email na base, retorna o seguinte erro:
 
   ```json
   {
@@ -65,7 +64,7 @@ Nesse projeto, você vai construir um back-end usando `ORM` com o pacote `sequel
   }
   ```
 
-- Caso contrário, retornar a mesma resposta do endpoint de `/login`, um token `JWT`:
+- Caso contrário, retorna a mesma resposta do endpoint de `/login`, um token `JWT`:
 
   ```json
   {
@@ -74,63 +73,63 @@ Nesse projeto, você vai construir um back-end usando `ORM` com o pacote `sequel
   ```
   _O token anterior é fictício_
 
-### Além disso, as seguintes verificações serão feitas:
+### Além disso, as seguintes verificações foram feitas:
 
-**[Será validado que é possível cadastrar um usuário com sucesso]**
+**[Foi validado que é possível cadastrar um usuário com sucesso]**
 
-Se o usuário for criado com sucesso o resultado retornado deverá ser conforme exibido abaixo, com um status http `201`:
+Se o usuário for criado com sucesso o resultado retornado é conforme exibido abaixo, com um status http `201`:
 
 ![Cadastro com sucesso](./public/cadastrodeusuario.png)
 
-**[Será validado que não é possível cadastrar usuário com o campo `displayName` menor que 8 caracteres]**
+**[Foi validado que não é possível cadastrar usuário com o campo `displayName` menor que 8 caracteres]**
 
-Se o usuário tiver o campo "displayName" menor que 8 caracteres o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
+Se o usuário tiver o campo "displayName" menor que 8 caracteres o resultado retornado é conforme exibido abaixo, com um status http `400`:
 
 ![Nome menor que 8](./public/nomemenorque8.png)
 (As contrabarras `\` estão escapando as aspas de dentro da string)
 
-**[Será validado que não é possível cadastrar usuário com o campo `email` com formato `email: rubinho`]**
+**[Foi validado que não é possível cadastrar usuário com o campo `email` com formato `email: rubinho`]**
 
-Se o usuário tiver o campo "email" com o formato `email: rubinho` o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
+Se o usuário tiver o campo "email" com o formato `email: rubinho` o resultado retornado é conforme exibido abaixo, com um status http `400`:
 
 ![Email inválido](./public/emailinvalido.png)
 (As contrabarras `\` estão escapando as aspas de dentro da string)
 
-**[Será validado que não é possível cadastrar usuário com o campo `email` com formato `email: @gmail.com`]**
+**[Foi validado que não é possível cadastrar usuário com o campo `email` com formato `email: @gmail.com`]**
 
-Se o usuário tiver o campo "email" com o formato `email: @gmail.com` o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
+Se o usuário tiver o campo "email" com o formato `email: @gmail.com` o resultado retornado é conforme exibido abaixo, com um status http `400`:
 
 ![Email inválido](./public/emailinvalido2.png)
 (As contrabarras `\` estão escapando as aspas de dentro da string)
 
-**[Será validado que o campo `email` é obrigatório]**
+**[Foi validado que o campo `email` é obrigatório]**
 
-Se o usuário não tiver campo "email" o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
+Se o usuário não tiver campo "email" o resultado retornado é conforme exibido abaixo, com um status http `400`:
 
 ![Email obrigatório](./public/emailobrigatorio.png)
 (As contrabarras `\` estão escapando as aspas de dentro da string)
 
-**[Será validado que não é possível cadastrar usuário com o campo `password` diferente de 6 caracteres]**
+**[Foi validado que não é possível cadastrar usuário com o campo `password` diferente de 6 caracteres]**
 
-Se o usuário tiver o campo "password" menor ou maior que 6 caracteres o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
+Se o usuário tiver o campo "password" menor ou maior que 6 caracteres o resultado retornado é conforme exibido abaixo, com um status http `400`:
 
 ![Senha menor que 6](./public/senhamenorque6.png)
 (As contrabarras `\` estão escapando as aspas de dentro da string)
 
-**[Será validado que o campo `password` é obrigatório]**
+**[Foi validado que o campo `password` é obrigatório]**
 
-Se o usuário não tiver campo "password" o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
+Se o usuário não tiver campo "password" o resultado retornado é conforme exibido abaixo, com um status http `400`:
 
 ![Senha Obrigatória](./public/semsenha.png)
 (As contrabarras `\` estão escapando as aspas de dentro da string)
 
 **[Validar que não é possível cadastrar um usuário com email já existente]**
 
-Se o usuário cadastrar o campo "email" com um email que já existe, o resultado retornado deverá ser conforme exibido abaixo, com um status http `409`:
+Se o usuário cadastrar o campo "email" com um email que já existe, o resultado retornado é conforme exibido abaixo, com um status http `409`:
 
 ![Usuário Existente](./public/usuariojaexistente.png)
 
-### 2 - Sua aplicação deve ter o endpoint POST `/login`
+### 2 - Endpoint POST `/login`
 
 #### Os seguintes pontos serão avaliados:
 
@@ -143,7 +142,7 @@ Se o usuário cadastrar o campo "email" com um email que já existe, o resultado
   }
   ```
 
-- Caso algum desses campos seja inválido ou não exista um usuário correspondente no banco de dados, retorne um código de status 400 com o corpo `{ message: "Invalid fields" }`.
+- Caso algum desses campos seja inválido ou não exista um usuário correspondente no banco de dados, retorna um código de status 400 com o corpo `{ message: "Invalid fields" }`.
 
 - Caso esteja tudo certo com o login, a resposta deve ser um token `JWT`, no seguinte formato:
 
@@ -154,49 +153,49 @@ Se o usuário cadastrar o campo "email" com um email que já existe, o resultado
   ```
   _O token anterior é fictício_
 
-### Além disso, as seguintes verificações serão feitas:
+### Além disso, as seguintes verificações foram feitas:
 
-**[Será validado que é possível fazer login com sucesso]**
+**[Foi validado que é possível fazer login com sucesso]**
 
-Se o login foi feito com sucesso o resultado retornado deverá ser conforme exibido abaixo, com um status http `200`:
+Se o login foi feito com sucesso o resultado retornado é conforme exibido abaixo, com um status http `200`:
 
 ![Login com sucesso](./public/logincomsucesso.png)
 
-**[Será validado que não é possível fazer login sem o campo `email`]**
+**[Foi validado que não é possível fazer login sem o campo `email`]**
 
-Se o login não tiver o campo "email" o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
+Se o login não tiver o campo "email" o resultado retornado é conforme exibido abaixo, com um status http `400`:
 
 ![Sem login](./public/sememaillogin.png)
 (As contrabarras `\` estão escapando as aspas de dentro da string)
 
-**[Será validado que não é possível fazer login sem o campo `password`]**
+**[Foi validado que não é possível fazer login sem o campo `password`]**
 
-Se o login não tiver o campo "password" o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
+Se o login não tiver o campo "password" o resultado retornado é conforme exibido abaixo, com um status http `400`:
 
 ![Sem senha](./public/semsenhalogin.png)
 (As contrabarras `\` estão escapando as aspas de dentro da string)
 
-**[Será validado que não é possível fazer login com o campo `email` em branco]**
+**[Foi validado que não é possível fazer login com o campo `email` em branco]**
 
-Se o login tiver o campo "email" em branco o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
+Se o login tiver o campo "email" em branco o resultado retornado é conforme exibido abaixo, com um status http `400`:
 
 ![Email em branco](./public/emailbrancologin.png)
 (As contrabarras `\` estão escapando as aspas de dentro da string)
 
-**[Será validado que não é possível fazer login com o campo `password` em branco]**
+**[Foi validado que não é possível fazer login com o campo `password` em branco]**
 
-Se o login tiver o campo "password" em branco o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
+Se o login tiver o campo "password" em branco o resultado retornado é conforme exibido abaixo, com um status http `400`:
 
 ![Senha em branco](./public/senhabrancologin.png)
 (As contrabarras `\` estão escapando as aspas de dentro da string)
 
-**[Será validado que não é possível fazer login com um usuário que não existe]**
+**[Foi validado que não é possível fazer login com um usuário que não existe]**
 
-Se o login for com usuário inexistente o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
+Se o login for com usuário inexistente o resultado retornado é conforme exibido abaixo, com um status http `400`:
 
 ![Usuário não existe](./public/usuarionaoexiste.png)
 
-### 3 - Sua aplicação deve ter o endpoint GET `/user`
+### 3 - Endpoint GET `/user`
 
 #### Os seguintes pontos serão avaliados:
 
@@ -213,29 +212,29 @@ Se o login for com usuário inexistente o resultado retornado deverá ser confor
   ]
   ```
 
-- A requisição deve ter token de autenticação nos headers e, caso contrário, retorne um código de `status 401`.
+- A requisição deve ter token de autenticação nos headers e, caso contrário, retorna um código de `status 401`.
 
-### Além disso, as seguintes verificações serão feitas:
+### Além disso, as seguintes verificações foram feitas:
 
-**[Será validado que é possível listar todos os usuários]**
+**[Foi validado que é possível listar todos os usuários]**
 
-Ao listar usuários com sucesso o resultado retornado deverá ser conforme exibido abaixo, com um status http `200`:
+Ao listar usuários com sucesso o resultado retornado é conforme exibido abaixo, com um status http `200`:
 
 ![Listar usuários](./public/listarusuarios.png)
 
-**[Será validado que não é possível listar usuários sem o token na requisição]**
+**[Foi validado que não é possível listar usuários sem o token na requisição]**
 
-Se o token for inexistente o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
+Se o token for inexistente o resultado retornado é conforme exibido abaixo, com um status http `401`:
 
 ![Token Vazio](./public/tokenvazio.png)
 
-**[Será validado que não é possível listar usuários com o token inválido]**
+**[Foi validado que não é possível listar usuários com o token inválido]**
 
-Se o token for inválido o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
+Se o token for inválido o resultado retornado é conforme exibido abaixo, com um status http `401`:
 
 ![Token inválido](./public/tokeninvalido.png)
 
-### 4 - Sua aplicação deve ter o endpoint GET `/user/:id`
+### 4 - Endpoint GET `/user/:id`
 
 #### Os seguintes pontos serão avaliados:
 
@@ -250,35 +249,35 @@ Se o token for inválido o resultado retornado deverá ser conforme exibido abai
   }
   ```
 
-- A requisição deve ter token de autenticação nos headers e, caso contrário, retorne um código de `status 401`.
+- A requisição deve ter token de autenticação nos headers e, caso contrário, retorna um código de `status 401`.
 
-### Além disso, as seguintes verificações serão feitas:
+### Além disso, as seguintes verificações foram feitas:
 
-**[Será validado que é possível listar um usuário específico com sucesso]**
+**[Foi validado que é possível listar um usuário específico com sucesso]**
 
-Ao listar um usuário com sucesso o resultado retornado deverá ser conforme exibido abaixo, com um status http `200`:
+Ao listar um usuário com sucesso o resultado retornado é conforme exibido abaixo, com um status http `200`:
 
 ![Listar um usuário](./public/listarumusuario.png)
 
-**[Será validado que não é possível listar um usuário inexistente]**
+**[Foi validado que não é possível listar um usuário inexistente]**
 
-Se o usuário for inexistente o resultado retornado deverá ser conforme exibido abaixo, com um status http `404`:
+Se o usuário for inexistente o resultado retornado é conforme exibido abaixo, com um status http `404`:
 
 ![Listar um usuário inexistente](./public/usuarioinexistente.png)
 
-**[Será validado que não é possível listar um determinado usuário sem o token na requisição]**
+**[Foi validado que não é possível listar um determinado usuário sem o token na requisição]**
 
-Se o token for inexistente o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
+Se o token for inexistente o resultado retornado é conforme exibido abaixo, com um status http `401`:
 
 ![Listar um usuário sem token](./public/semtokenumusuario.png)
 
-**[Será validado que não é possível listar um determinado usuário com o token inválido]**
+**[Foi validado que não é possível listar um determinado usuário com o token inválido]**
 
-Se o token for inválido o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
+Se o token for inválido o resultado retornado é conforme exibido abaixo, com um status http `401`:
 
 ![Listar um usuário com token inválido](./public/tokeninvalidoumusuario.png)
 
-### 5 - Sua aplicação deve ter o endpoint POST `/categories`
+### 5 - Endpoint POST `/categories`
 
 #### Os seguintes pontos serão avaliados:
 
@@ -292,34 +291,34 @@ Se o token for inválido o resultado retornado deverá ser conforme exibido abai
 
 - Caso a Categoria não contenha o `name` a API deve retornar um erro de `status 400`.
 
-- A requisição deve ter o token de autenticação nos headers e, caso contrário, retorne um código de `status 401`.
+- A requisição deve ter o token de autenticação nos headers e, caso contrário, retorna um código de `status 401`.
 
-### Além disso, as seguintes verificações serão feitas:
+### Além disso, as seguintes verificações foram feitas:
 
-**[Será validado que é possível cadastrar uma categoria com sucesso]**
+**[Foi validado que é possível cadastrar uma categoria com sucesso]**
 
-Se cadastrar uma categoria com sucesso o resultado retornado deverá ser conforme exibido abaixo, com um status http `201`:
+Se cadastrar uma categoria com sucesso o resultado retornado é conforme exibido abaixo, com um status http `201`:
 
 ![Criar categoria com sucesso](./public/cadastrarCategoria.png)
 
-**[Será validado que não é possível cadastrar uma categoria sem o campo name]**
+**[Foi validado que não é possível cadastrar uma categoria sem o campo name]**
 
-Se ao tentar cadastrar uma categoria sem o campo name o resultado retornado deverá ser conforme exibido abaixo, com um status http 400:
+Se ao tentar cadastrar uma categoria sem o campo name o resultado retornado é conforme exibido abaixo, com um status http 400:
 ![Criar categoria com sucesso](./public/cadastrarCategoriaSemName.png)
 
-**[Será validado que não é possível cadastrar uma determinada categoria com o token inválido]**
+**[Foi validado que não é possível cadastrar uma determinada categoria com o token inválido]**
 
-Se o token for inválido o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
+Se o token for inválido o resultado retornado é conforme exibido abaixo, com um status http `401`:
 
 ![Cadastrar uma categoria com token inválido](./public/cadastrarcategoriacomtokeninvalido.png)
 
-**[Será validado que não é possível cadastrar uma determinada categoria sem o token na requisição]**
+**[Foi validado que não é possível cadastrar uma determinada categoria sem o token na requisição]**
 
-Se o token for inexistente o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
+Se o token for inexistente o resultado retornado é conforme exibido abaixo, com um status http `401`:
 
 ![Cadastrar uma categoria sem token](./public/cadastrarcategoriasemtoken.png)
 
-### 6 - Sua aplicação deve ter o endpoint GET `/categories`
+### 6 - Endpoint GET `/categories`
 
 #### Os seguintes pontos serão avaliados:
 
@@ -338,28 +337,28 @@ Se o token for inexistente o resultado retornado deverá ser conforme exibido ab
 ]
 ```
 
-Além disso, as seguintes verificações serão feitas:
-[Será validado que é possível listar todas as categoria com sucesso]
+Além disso, as seguintes verificações foram feitas:
+[Foi validado que é possível listar todas as categoria com sucesso]
 
-Se buscar todas as categorias com sucesso o resultado retornado deverá ser conforme exibido abaixo, com um status http 200:
+Se buscar todas as categorias com sucesso o resultado retornado é conforme exibido abaixo, com um status http 200:
 
 ![Buscar todas as categoria com sucesso](./public/buscartodascategoriascomsucesso.png)
 
 
-**[Será validado que não é possível listar as categorias com o token inválido]**
+**[Foi validado que não é possível listar as categorias com o token inválido]**
 
-Se o token for inválido o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
+Se o token for inválido o resultado retornado é conforme exibido abaixo, com um status http `401`:
 
 ![Buscar uma categoria com token inválido](./public/buscarcategoriacomtokeninvalido.png)
 
-**[Será validado que não é possível cadastrar uma determinada categoria sem o token na requisição]**
+**[Foi validado que não é possível cadastrar uma determinada categoria sem o token na requisição]**
 
-Se o token for inexistente o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
+Se o token for inexistente o resultado retornado é conforme exibido abaixo, com um status http `401`:
 
 ![Buscar uma categoria sem token](./public/buscarcategoriasemtoken.png)
 
 
-### 7 - Sua aplicação deve ter o endpoint POST `/post`
+### 7 - Endpoint POST `/post`
 
 #### Os seguintes pontos serão avaliados:
 
@@ -375,54 +374,54 @@ Se o token for inexistente o resultado retornado deverá ser conforme exibido ab
 
 - Caso o post não contenha o `title`, `content` ou `categoryIds` a API deve retornar um erro de `status 400`.
 
-- A requisição deve ter o token de autenticação nos headers e, caso contrário, retorne um código de `status 401`.
+- A requisição deve ter o token de autenticação nos headers e, caso contrário, retorna um código de `status 401`.
 
-### Além disso, as seguintes verificações serão feitas:
+### Além disso, as seguintes verificações foram feitas:
 
-**[Será validado que é possível cadastrar um blogpost com sucesso]**
+**[Foi validado que é possível cadastrar um blogpost com sucesso]**
 
-Se cadastrar um blogpost com sucesso o resultado retornado deverá ser conforme exibido abaixo, com um status http `201`:
+Se cadastrar um blogpost com sucesso o resultado retornado é conforme exibido abaixo, com um status http `201`:
 
 ![Criar blogspot com sucesso](./public/criarblogpost.png)
 
-**[Será validado que não é possível cadastrar um blogpost sem o campo `title`]**
+**[Foi validado que não é possível cadastrar um blogpost sem o campo `title`]**
 
-Se não conter o campo `title` o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
+Se não conter o campo `title` o resultado retornado é conforme exibido abaixo, com um status http `400`:
 
 ![blogpost sem content](./public/camposemtitle.png)
 
-**[Será validado que não é possível cadastrar um blogpost sem o campo `content`]**
+**[Foi validado que não é possível cadastrar um blogpost sem o campo `content`]**
 
-Se não conter o campo `content` o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
+Se não conter o campo `content` o resultado retornado é conforme exibido abaixo, com um status http `400`:
 
 ![blogpost sem content](./public/semcampocontent.png)
 
-**[Será validado que não é possível cadastrar um blogpost sem o campo `categoryIds`]**
+**[Foi validado que não é possível cadastrar um blogpost sem o campo `categoryIds`]**
 
-Se não conter o campo `categoryIds` o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
+Se não conter o campo `categoryIds` o resultado retornado é conforme exibido abaixo, com um status http `400`:
 
 ![blogpost sem categoryId](./public/semcampocategoryid.png)
 
-**[Será validado que não é possível cadastrar um blogpost com uma `categoryIds` inexistente]**
+**[Foi validado que não é possível cadastrar um blogpost com uma `categoryIds` inexistente]**
 
-Se o campo `categoryIds` tiver uma categoria inexistente, o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
+Se o campo `categoryIds` tiver uma categoria inexistente, o resultado retornado é conforme exibido abaixo, com um status http `400`:
 
 ![blogpost categoryId invalida](./public/cadastrarpostcomcategoryidinvalida.png)
 
 
-**[Será validado que não é possível cadastrar um blogpost sem o token]**
+**[Foi validado que não é possível cadastrar um blogpost sem o token]**
 
-Se não conter o token o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
+Se não conter o token o resultado retornado é conforme exibido abaixo, com um status http `401`:
 
 ![blogpost sem token ](./public/criarpostsemtoken.png)
 
-**[Será validado que não é possível cadastrar um blogpost com o token inválido]**
+**[Foi validado que não é possível cadastrar um blogpost com o token inválido]**
 
-Se o token for inválido o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
+Se o token for inválido o resultado retornado é conforme exibido abaixo, com um status http `401`:
 
 ![blogpost com token inválido](./public/criarposttokeninvalido.png)
 
-### 8 - Sua aplicação deve ter o endpoint GET `/post`
+### 8 - Endpoint GET `/post`
 
 #### Os seguintes pontos serão avaliados:
 
@@ -453,27 +452,27 @@ Se o token for inválido o resultado retornado deverá ser conforme exibido abai
 ]
 ```
 
-### Além disso, as seguintes verificações serão feitas:
+### Além disso, as seguintes verificações foram feitas:
 
-**[Será validado que é possível listar blogpost com sucesso]**
+**[Foi validado que é possível listar blogpost com sucesso]**
 
-Se listar os blogpost com sucesso o resultado retornado deverá ser conforme exibido abaixo, com um status http `200`:
+Se listar os blogpost com sucesso o resultado retornado é conforme exibido abaixo, com um status http `200`:
 
 ![Criar blogspot com sucesso](./public/listarumblogpost.png)
 
-**[Será validado que não é possível listar blogpost sem token]**
+**[Foi validado que não é possível listar blogpost sem token]**
 
-Se não conter o token o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
+Se não conter o token o resultado retornado é conforme exibido abaixo, com um status http `401`:
 
 ![blogpost sem token ](./public/listarpostsemtoken.png)
 
-**[Será validado que não é possível listar blogpost com token inválido]**
+**[Foi validado que não é possível listar blogpost com token inválido]**
 
-Se o token for inválido o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
+Se o token for inválido o resultado retornado é conforme exibido abaixo, com um status http `401`:
 
 ![blogpost com token inválido](./public/listarposttokeninvalido.png)
 
-### 9 - Sua aplicação deve ter o endpoint GET `post/:id`
+### 9 - Endpoint GET `post/:id`
 
 #### Os seguintes pontos serão avaliados:
 
@@ -502,35 +501,35 @@ Se o token for inválido o resultado retornado deverá ser conforme exibido abai
 }
 ```
 
-### Além disso, as seguintes verificações serão feitas:
+### Além disso, as seguintes verificações foram feitas:
 
-**[Será validado que é possível listar um blogpost com sucesso]**
+**[Foi validado que é possível listar um blogpost com sucesso]**
 
-Se listar um blogpost com sucesso o resultado retornado deverá ser conforme exibido abaixo, com um status http `200`:
+Se listar um blogpost com sucesso o resultado retornado é conforme exibido abaixo, com um status http `200`:
 
 ![Listar um post com sucesso](./public/listarumpostcomsucesso.png)
 
-**[Será validado que não é possível listar um blogpost sem token]**
+**[Foi validado que não é possível listar um blogpost sem token]**
 
-Se não conter o token o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
+Se não conter o token o resultado retornado é conforme exibido abaixo, com um status http `401`:
 
 ![blogpost com token inválido](./public/listaumpostsemtoken.png)
 
-**[Será validado que não é possível listar um blogpost com token inválido]**
+**[Foi validado que não é possível listar um blogpost com token inválido]**
 
-Se o token for inválido o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
+Se o token for inválido o resultado retornado é conforme exibido abaixo, com um status http `401`:
 
 ![blogpost com token inválido](./public/listaumposttokeninvalido.png)
 
-**[Será validado que não é possível listar um blogpost inexistente]**
+**[Foi validado que não é possível listar um blogpost inexistente]**
 
-Se o id do post for inválido o resultado retornado deverá ser conforme exibido abaixo, com um status http `404`:
+Se o id do post for inválido o resultado retornado é conforme exibido abaixo, com um status http `404`:
 
 ![Listar um post inexistente](./public/listarumpostinexistente.png)
 
 
 
-### 10 - Sua aplicação deve ter o endpoint PUT `/post/:id`
+### 10 - Endpoint PUT `/post/:id`
 
 #### Os seguintes pontos serão avaliados:
 
@@ -549,58 +548,58 @@ Se o id do post for inválido o resultado retornado deverá ser conforme exibido
 
 - Caso uma pessoa diferente de quem criou faça a requisição, deve retornar um código `status 401`.
 
-- Caso uma requisição sem token seja recebida, deve-se retornar um código de `status 401`.
+- Caso uma requisição sem token seja recebida, retorna um código de `status 401`.
 
 - Caso o post não contenha o `title` e/ou o `content` a API deve retornar um erro de `status 400`.
 
-### Além disso, as seguintes verificações serão feitas:
+### Além disso, as seguintes verificações foram feitas:
 
-**[Será validado que é possível editar um blogpost com sucesso]**
+**[Foi validado que é possível editar um blogpost com sucesso]**
 
-Se editar um blogpost com sucesso o resultado retornado deverá ser conforme exibido abaixo, com um status http `200`:
+Se editar um blogpost com sucesso o resultado retornado é conforme exibido abaixo, com um status http `200`:
 
 ![blogpost com token inválido](./public/editarpostcomsucesso.png)
 
-**[Será validado que não é possível editar as categorias de um blogpost]**
+**[Foi validado que não é possível editar as categorias de um blogpost]**
 
 Só será possível editar o título ou o conteúdo de um post.
 
 ![editar com campo categorias](./public/editarpostcomcategorias.png)
 
 
-**[Será validado que não é possível editar um blogpost com outro usuário]**
+**[Foi validado que não é possível editar um blogpost com outro usuário]**
 
 Somente o usuário que criou o post poderá editá-lo.
 
 ![blogpost com token inválido](./public/editarcomoutrousuario.png)
 
-**[Será validado que não possível editar um blogpost sem token]**
+**[Foi validado que não possível editar um blogpost sem token]**
 
-Se não conter o token o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
+Se não conter o token o resultado retornado é conforme exibido abaixo, com um status http `401`:
 
 ![blogpost com token inválido](./public/editarsemtoken.png)
 
-**[Será validado que não possível editar um blogpost com token inválido]**
+**[Foi validado que não possível editar um blogpost com token inválido]**
 
-Se o token for inválido o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
+Se o token for inválido o resultado retornado é conforme exibido abaixo, com um status http `401`:
 
 ![blogpost com token inválido](./public/editartokeninvalido.png)
 
-**[Será validado que não possível editar um blogpost sem o campo `title`]**
+**[Foi validado que não possível editar um blogpost sem o campo `title`]**
 
-Se não conter o campo `title` o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
+Se não conter o campo `title` o resultado retornado é conforme exibido abaixo, com um status http `400`:
 
 ![blogpost com token inválido](./public/editarsemtitle.png)
 
-**[Será validado que não possível editar um blogpost sem o campo `content`]**
+**[Foi validado que não possível editar um blogpost sem o campo `content`]**
 
-Se não conter o campo `content` o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
+Se não conter o campo `content` o resultado retornado é conforme exibido abaixo, com um status http `400`:
 
 ![blogpost com token inválido](./public/editarsemcontent.png)
 
 ## Requisitos Bônus
 
-### 11 - Sua aplicação deve ter o endpoint DELETE `post/:id`
+### 11 - Endpoint DELETE `post/:id`
 
 #### Os seguintes pontos serão avaliados:
 
@@ -608,69 +607,69 @@ Se não conter o campo `content` o resultado retornado deverá ser conforme exib
 
 - Caso uma pessoa diferente de quem criou faça a requisição, deve retornar um código `status 401`.
 
-- Caso uma requisição sem token seja recebida, deve-se retornar um código de `status 401`.
+- Caso uma requisição sem token seja recebida, retorna um código de `status 401`.
 
-- Caso o post referido não exista, deve-se retornar um código de `status 404`.
+- Caso o post referido não exista, retorna um código de `status 404`.
 
-### Além disso, as seguintes verificações serão feitas:
+### Além disso, as seguintes verificações foram feitas:
 
-**[Será validado que é possível deletar um blogpost com sucesso]**
+**[Foi validado que é possível deletar um blogpost com sucesso]**
 
-Se deletar blogpost com sucesso o resultado retornado deverá ser conforme exibido abaixo, com um status http `204`:
+Se deletar blogpost com sucesso o resultado retornado é conforme exibido abaixo, com um status http `204`:
 
 ![blogpost com token inválido](./public/deletarpostcomsucesso.png)
 
-**[Será validado que não é possível deletar um blogpost com outro usuário]**
+**[Foi validado que não é possível deletar um blogpost com outro usuário]**
 
-Se não for o dono do blogpost o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
+Se não for o dono do blogpost o resultado retornado é conforme exibido abaixo, com um status http `401`:
 
 ![blogpost com token inválido](./public/deletarpostcomoutrousuario.png)
 
-**[Será validado que não é possível deletar um blogpost inexistente]**
+**[Foi validado que não é possível deletar um blogpost inexistente]**
 
-Se o blogpost nao existir o resultado retornado deverá ser conforme exibido abaixo, com um status http `404`:
+Se o blogpost nao existir o resultado retornado é conforme exibido abaixo, com um status http `404`:
 
 ![blogpost com token inválido](./public/deletarpostquenaoexiste.png)
 
-**[Será validado que não é possível deletar um blogpost sem o token]**
+**[Foi validado que não é possível deletar um blogpost sem o token]**
 
-Se não contém o token o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
+Se não contém o token o resultado retornado é conforme exibido abaixo, com um status http `401`:
 
 ![blogpost com token inválido](./public/deletarpostsemtoken.png)
 
-**[Será validado que não é possível deletar um blogpost com o token inválido]**
+**[Foi validado que não é possível deletar um blogpost com o token inválido]**
 
-Se o token for inválido o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
+Se o token for inválido o resultado retornado é conforme exibido abaixo, com um status http `401`:
 
 ![blogpost com token inválido](./public/deletarpostcomtokeninvalido.png)
 
-### 12 - Sua aplicação deve ter o endpoint DELETE `/user/me`
+### 12 - Endpoint DELETE `/user/me`
 
 #### Os seguintes pontos serão avaliados:
 
 - Utilizando o token de autenticação nos headers, o usuário correspondente deve ser apagado.
 
-### Além disso, as seguintes verificações serão feitas:
+### Além disso, as seguintes verificações foram feitas:
 
-**[Será validado que é possível excluir meu usuário com sucesso]**
+**[Foi validado que é possível excluir meu usuário com sucesso]**
 
-Ao deletar um usuário com sucesso o resultado retornado deverá ser conforme exibido abaixo, com um status http `204`:
+Ao deletar um usuário com sucesso o resultado retornado é conforme exibido abaixo, com um status http `204`:
 
 ![Deletar com sucesso](./public/deletarcomsucesso.png)
 
-**[Será validado que não é possível excluir meu usuário com token inválido]**
+**[Foi validado que não é possível excluir meu usuário com token inválido]**
 
-Se o token for inválido o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
+Se o token for inválido o resultado retornado é conforme exibido abaixo, com um status http `401`:
 
 ![Deletar com token inválido](./public/deletarcomtokeninvalido.png)
 
-**[Será validado que não é possível excluir meu usuário sem o token]**
+**[Foi validado que não é possível excluir meu usuário sem o token]**
 
-Se não conter o token o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
+Se não conter o token o resultado retornado é conforme exibido abaixo, com um status http `401`:
 
 ![Deletar sem token](./public/deletarsemtoken.png)
 
-### 13 - Sua aplicação deve ter o endpoint GET `post/search?q=:searchTerm`
+### 13 - Endpoint GET `post/search?q=:searchTerm`
 
 #### Os seguintes pontos serão avaliados:
 
@@ -701,42 +700,42 @@ Se não conter o token o resultado retornado deverá ser conforme exibido abaixo
 ]
   ```
 
-- Caso nenhum **BlogPost** satisfaça a busca, retorne um array vazio.
+- Caso nenhum **BlogPost** satisfaça a busca, retorna um array vazio.
 
-### Além disso, as seguintes verificações serão feitas:
+### Além disso, as seguintes verificações foram feitas:
 
-**[Será validado que é possível buscar um blogpost pelo `title`]**
+**[Foi validado que é possível buscar um blogpost pelo `title`]**
 
-Se a buscar for pelo `title` o resultado retornado deverá ser conforme exibido abaixo, com um status http `200`:
+Se a buscar for pelo `title` o resultado retornado é conforme exibido abaixo, com um status http `200`:
 
 ![blogpost com token inválido](./public/buscarpostpelotitle.png)
 
-**[Será validado que é possível buscar um blogpost pelo `content`]**
+**[Foi validado que é possível buscar um blogpost pelo `content`]**
 
-Se a buscar for pelo `content` o resultado retornado deverá ser conforme exibido abaixo, com um status http `200`:
+Se a buscar for pelo `content` o resultado retornado é conforme exibido abaixo, com um status http `200`:
 
 ![blogpost com token inválido](./public/buscarpostpelocontent.png)
 
-**[Será validado que é possível buscar todos os blogpost quando passa a busca vazia']**
+**[Foi validado que é possível buscar todos os blogpost quando passa a busca vazia']**
 
-Se a buscar for vazia o resultado retornado deverá ser conforme exibido abaixo, com um status http `200`:
+Se a buscar for vazia o resultado retornado é conforme exibido abaixo, com um status http `200`:
 
 ![blogpost com token inválido](./public/listarpostcampovazio.png)
 
-**[Será validado que é possível buscar um blogpost inexistente e retornar array vazio]**
+**[Foi validado que é possível buscar um blogpost inexistente e retornar array vazio]**
 
-Se a buscar um post inexistente o resultado retornado deverá ser conforme exibido abaixo, com um status http `200`:
+Se a buscar um post inexistente o resultado retornado é conforme exibido abaixo, com um status http `200`:
 
 ![blogpost com token inválido](./public/listarumpostquenaoexiste.png)
 
-**[Será validado que não é possível buscar um blogpost sem o token]**
+**[Foi validado que não é possível buscar um blogpost sem o token]**
 
-Se não contém o token o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
+Se não contém o token o resultado retornado é conforme exibido abaixo, com um status http `401`:
 
 ![blogpost com token inválido](./public/buscarpostsemtoken.png)
 
-**[Será validado que não é possível buscar um blogpost com o token inválido]**
+**[Foi validado que não é possível buscar um blogpost com o token inválido]**
 
-Se o token for inválido o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
+Se o token for inválido o resultado retornado é conforme exibido abaixo, com um status http `401`:
 
 ![blogpost com token inválido](./public/buscarpostcomtokeninvalido.png)
